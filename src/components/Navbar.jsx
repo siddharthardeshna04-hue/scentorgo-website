@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/scentorgo export logo.png";
+import logo from "../assets/Scentorgo Export logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
