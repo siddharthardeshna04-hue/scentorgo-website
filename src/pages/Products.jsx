@@ -62,8 +62,54 @@ const herbalProducts = [
   { name: "Kudzu Extract", scientific: "Pueraria lobata" }
 ];
 
+// New Agricultural Products Data
+const agriculturalProducts = [
+  { name: "Wheat", category: "Cereals & Grains" },
+  { name: "Rice", category: "Cereals & Grains" },
+  { name: "Maize (Corn)", category: "Cereals & Grains" },
+  { name: "Barley", category: "Cereals & Grains" },
+  { name: "Chickpeas", category: "Pulses & Legumes" },
+  { name: "Lentils", category: "Pulses & Legumes" },
+  { name: "Green Gram", category: "Pulses & Legumes" },
+  { name: "Black Gram", category: "Pulses & Legumes" },
+  { name: "Kidney Beans", category: "Pulses & Legumes" },
+  { name: "Sesame Seeds", category: "Oil Seeds" },
+  { name: "Mustard Seeds", category: "Oil Seeds" },
+  { name: "Soy beans", category: "Oil Seeds" },
+  { name: "Sunflower Seeds", category: "Oil Seeds" },
+  { name: "Cotton Seed", category: "Oil Seeds" },
+  { name: "Turmeric", category: "Spices" },
+  { name: "Cumin", category: "Spices" },
+  { name: "Coriander", category: "Spices" },
+  { name: "Chili", category: "Spices" },
+  { name: "Black Pepper", category: "Spices" },
+  { name: "Ginger", category: "Spices" },
+  { name: "Peanuts", category: "Nuts & Dry Fruits" },
+  { name: "Cashews", category: "Nuts & Dry Fruits" },
+  { name: "Almonds", category: "Nuts & Dry Fruits" },
+  { name: "Raisins (Dried Grapes)", category: "Nuts & Dry Fruits" },
+  { name: "Anjeer (Dried Figs)", category: "Nuts & Dry Fruits" },
+  { name: "Walnut", category: "Nuts & Dry Fruits" },
+  { name: "Onions", category: "Fresh & Dehydrated Produce" },
+  { name: "Garlic", category: "Fresh & Dehydrated Produce" },
+  { name: "Potatoes", category: "Fresh & Dehydrated Produce" },
+  { name: "Dehydrated Vegetables", category: "Fresh & Dehydrated Produce" },
+  { name: "Fresh Fruit & Vegetables", category: "Fresh & Dehydrated Produce" },
+  { name: "Jaggery (Cane / Palm)", category: "Natural Sweeteners" },
+  { name: "Cotton", category: "Fiber Crops" }
+];
+
+// Helper to group the agricultural products by their category
+const groupedAgriProducts = agriculturalProducts.reduce((groups, product) => {
+  const category = product.category;
+  if (!groups[category]) {
+    groups[category] = [];
+  }
+  groups[category].push(product);
+  return groups;
+}, {});
+
 const Products = () => {
-  // State to track which category is currently selected
   const [activeCategory, setActiveCategory] = useState("Herbal Products");
 
   const categories = [
@@ -89,7 +135,7 @@ const Products = () => {
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => setActiveCategory(activeCategory === category ? null : category)}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 shadow-sm ${
                 activeCategory === category
                   ? "bg-green-600 text-white shadow-md scale-105"
@@ -101,30 +147,61 @@ const Products = () => {
           ))}
         </div>
 
-        {/* Product Grid Area */}
-        {activeCategory === "Herbal Products" ? (
-          <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {herbalProducts.map((product, index) => (
-                <div 
-                  key={index} 
-                  className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer flex flex-col items-center justify-center text-center min-h-40"
-                >
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{product.name}</h3>
-                  <p className="text-xs text-green-700 font-medium bg-green-50 inline-block px-3 py-1 rounded-full">
-                    {product.scientific}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </>
-        ) : (
-          /* Empty State for Agricultural and Organic Products */
-          <div className="bg-white rounded-2xl p-12 text-center border border-gray-100 shadow-sm">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Coming Soon</h3>
-            <p className="text-gray-600">
-              We are currently updating our catalog for {activeCategory}. Please check back later!
-            </p>
+        {/* Product Display Area */}
+        {activeCategory && (
+          <div>
+            {/* Herbal Products - Standard Grid */}
+            {activeCategory === "Herbal Products" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {herbalProducts.map((product, index) => (
+                  <div 
+                    key={index} 
+                    className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center justify-center text-center min-h-40"
+                  >
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{product.name}</h3>
+                    <p className="text-xs text-green-700 font-medium bg-green-50 inline-block px-3 py-1 rounded-full">
+                      {product.scientific}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Agricultural Products - Grouped by Category */}
+            {activeCategory === "Agricultural Products" && (
+              <div className="space-y-16">
+                {Object.entries(groupedAgriProducts).map(([categoryName, products]) => (
+                  <div key={categoryName}>
+                    {/* Group Header */}
+                    <div className="mb-6 border-b border-gray-200 pb-2">
+                      <h3 className="text-2xl font-bold text-green-700">{categoryName}</h3>
+                    </div>
+                    
+                    {/* Group Grid - Height and padding reduced */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                      {products.map((product, index) => (
+                        <div 
+                          key={index} 
+                          className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center justify-center text-center min-h-24"
+                        >
+                          <h4 className="text-xl font-bold text-gray-900">{product.name}</h4>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Organic Products - Coming Soon */}
+            {activeCategory === "Organic Products" && (
+              <div className="bg-white rounded-2xl p-12 text-center border border-gray-100 shadow-sm">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Coming Soon</h3>
+                <p className="text-gray-600">
+                  We are currently updating our catalog for {activeCategory}. Please check back later!
+                </p>
+              </div>
+            )}
           </div>
         )}
 
