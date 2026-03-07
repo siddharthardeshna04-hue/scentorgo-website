@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
 
-// Product Hover Color & Text Contrast Map for Agricultural Products
+// Unified Product Hover Color & Text Contrast Map for All Categories
 const productHoverColors = {
+  // --- AGRICULTURAL PRODUCTS ---
   // Cereals & Grains
   "Wheat": { bg: "#DDA049", text: "#FFFFFF" },
   "Rice": { bg: "#F4F4F0", text: "#1F2937" },
   "Maize (Corn)": { bg: "#FFD700", text: "#1F2937" },
   "Barley": { bg: "#E3C598", text: "#1F2937" },
-  
   // Pulses & Legumes
   "Chickpeas": { bg: "#D2B48C", text: "#1F2937" },
   "Lentils": { bg: "#CC7722", text: "#FFFFFF" },
   "Green Gram": { bg: "#8F9779", text: "#FFFFFF" },
   "Black Gram": { bg: "#4A4A4A", text: "#FFFFFF" },
   "Kidney Beans": { bg: "#7E2811", text: "#FFFFFF" },
-  
   // Oil Seeds
   "Sesame Seeds": { bg: "#E3D8C8", text: "#1F2937" },
   "Mustard Seeds": { bg: "#FFDB58", text: "#1F2937" },
   "Soy beans": { bg: "#D4C8A1", text: "#1F2937" },
   "Sunflower Seeds": { bg: "#FFC512", text: "#1F2937" },
   "Cotton Seed": { bg: "#D1D1D1", text: "#1F2937" },
-  
   // Spices
   "Turmeric": { bg: "#FFB300", text: "#FFFFFF" },
   "Cumin": { bg: "#947B5A", text: "#FFFFFF" },
@@ -29,7 +27,6 @@ const productHoverColors = {
   "Chili": { bg: "#C21807", text: "#FFFFFF" },
   "Black Pepper": { bg: "#3A3A3A", text: "#FFFFFF" },
   "Ginger": { bg: "#E6C280", text: "#1F2937" },
-  
   // Nuts & Dry Fruits
   "Peanuts": { bg: "#D9A05B", text: "#FFFFFF" },
   "Cashews": { bg: "#F2E3C6", text: "#1F2937" },
@@ -37,18 +34,15 @@ const productHoverColors = {
   "Raisins (Dried Grapes)": { bg: "#4B0082", text: "#FFFFFF" },
   "Anjeer (Dried Figs)": { bg: "#808000", text: "#FFFFFF" },
   "Walnut": { bg: "#773F1A", text: "#FFFFFF" },
-  
   // Fresh & Dehydrated Produce
   "Onions": { bg: "#D8BFD8", text: "#1F2937" },
   "Garlic": { bg: "#F0E6D2", text: "#1F2937" },
   "Potatoes": { bg: "#B79268", text: "#FFFFFF" },
   "Dehydrated Vegetables": { bg: "#556B2F", text: "#FFFFFF" },
   "Fresh Fruit & Vegetables": { bg: "#4CAF50", text: "#FFFFFF" },
-  
   // Natural Sweeteners & Fiber Crops
   "Jaggery (Cane / Palm)": { bg: "#8B4513", text: "#FFFFFF" },
   "Cotton": { bg: "#F8F8FF", text: "#1F2937" },
-
   // Fresh Fruit
   "Mango": { bg: "#F8A100", text: "#FFFFFF" },
   "Banana": { bg: "#FFE135", text: "#1F2937" },
@@ -56,10 +50,85 @@ const productHoverColors = {
   "Orange": { bg: "#FF9F43", text: "#FFFFFF" },
   "Grapes": { bg: "#A32CC4", text: "#FFFFFF" },
   "Pomegranate": { bg: "#E91E63", text: "#FFFFFF" },
-  "Guava": { bg: "#8BC34A", text: "#FFFFFF" }
+  "Guava": { bg: "#8BC34A", text: "#FFFFFF" },
+
+  // --- HERBAL PRODUCTS ---
+  "Ashwagandha Extract": { bg: "#C19A6B", text: "#FFFFFF" }, // Root brown
+  "Green Tea Extract": { bg: "#4CAF50", text: "#FFFFFF" }, // Leaf green
+  "Fenugreek Extract": { bg: "#CD853F", text: "#FFFFFF" }, // Golden brown
+  "Tulsi Extract": { bg: "#2E8B57", text: "#FFFFFF" }, // Holy basil green
+  "Neem Extract": { bg: "#006400", text: "#FFFFFF" }, // Deep green
+  "Turmeric Extract": { bg: "#FFA500", text: "#1F2937" }, // Vibrant orange-yellow
+  "Amla Extract": { bg: "#9ACD32", text: "#1F2937" }, // Light yellow-green
+  "Ginger Extract": { bg: "#DEB887", text: "#1F2937" }, // Pale root yellow
+  "Boswellia Extract": { bg: "#DAA520", text: "#1F2937" }, // Golden resin
+  "Licorice Extract": { bg: "#8B4513", text: "#FFFFFF" }, // Wood brown
+  "Shatavari Extract": { bg: "#F5DEB3", text: "#1F2937" }, // Pale root
+  "Brahmi Extract": { bg: "#228B22", text: "#FFFFFF" }, // Forest green
+  "Tribulus Extract": { bg: "#BDB76B", text: "#1F2937" }, // Khaki yellow
+  "Bacopa Extract": { bg: "#556B2F", text: "#FFFFFF" }, // Dark olive green
+  "Bitter Melon Extract": { bg: "#3CB371", text: "#FFFFFF" }, // Medium sea green
+  "Cissus Extract": { bg: "#8FBC8F", text: "#1F2937" }, // Pale green
+  "Coleus Extract": { bg: "#8B008B", text: "#FFFFFF" }, // Dark magenta (flower)
+  "Garcinia Extract": { bg: "#FFD700", text: "#1F2937" }, // Fruit yellow
+  "Guggul Extract": { bg: "#A0522D", text: "#FFFFFF" }, // Brown resin
+  "Gymnema Extract": { bg: "#2E8B57", text: "#FFFFFF" }, // Leaf green
+  "Noni Extract": { bg: "#FFFACD", text: "#1F2937" }, // Pale fruit yellow
+  "Pomegranate Extract": { bg: "#DC143C", text: "#FFFFFF" }, // Crimson red
+  "Sea Buckthorn Extract": { bg: "#FF8C00", text: "#1F2937" }, // Dark orange
+  "Stevia Extract": { bg: "#98FB98", text: "#1F2937" }, // Pale green
+  "Valerian Extract": { bg: "#D2B48C", text: "#1F2937" }, // Light brown
+  "Wheatgrass Extract": { bg: "#7CFC00", text: "#1F2937" }, // Bright grass green
+  "Aloe Vera Extract": { bg: "#00FF7F", text: "#1F2937" }, // Spring green
+  "Bael Extract": { bg: "#DAA520", text: "#1F2937" }, // Golden yellow
+  "Arjuna Extract": { bg: "#8B4513", text: "#FFFFFF" }, // Bark brown
+  "Black Pepper Extract": { bg: "#1C1C1C", text: "#FFFFFF" }, // Black
+  "Bhringraj Extract": { bg: "#2F4F4F", text: "#FFFFFF" }, // Dark slate green
+  "Curry Leaf Extract": { bg: "#006400", text: "#FFFFFF" }, // Dark green
+  "Fennel Extract": { bg: "#F5DEB3", text: "#1F2937" }, // Pale green/yellow
+  "Hibiscus Extract": { bg: "#DC143C", text: "#FFFFFF" }, // Deep red
+  "Cumin Extract": { bg: "#CD853F", text: "#FFFFFF" }, // Brownish
+  "Holy Basil Extract": { bg: "#2E8B57", text: "#FFFFFF" }, // Green
+  "Onion Extract": { bg: "#DDA0DD", text: "#1F2937" }, // Plum/pink
+  "Rosemary Extract": { bg: "#556B2F", text: "#FFFFFF" }, // Olive green
+  "Sage Extract": { bg: "#8FBC8F", text: "#1F2937" }, // Grey-green
+  "Senna Extract": { bg: "#BDB76B", text: "#1F2937" }, // Yellowish green
+  "Spirulina Extract": { bg: "#008080", text: "#FFFFFF" }, // Teal/blue-green
+  "Triphala Extract": { bg: "#8B4513", text: "#FFFFFF" }, // Earthy brown
+  "Green Coffee Bean Extract": { bg: "#8FBC8F", text: "#1F2937" }, // Pale green
+  "Moringa Extract": { bg: "#32CD32", text: "#1F2937" }, // Lime green
+  "Cinnamon Extract": { bg: "#D2691E", text: "#FFFFFF" }, // Cinnamon brown
+  "Clove Extract": { bg: "#654321", text: "#FFFFFF" }, // Dark brown
+  "Cardamom Extract": { bg: "#9ACD32", text: "#1F2937" }, // Light green
+  "Peppermint Extract": { bg: "#00FA9A", text: "#1F2937" }, // Mint green
+  "Spearmint Extract": { bg: "#3CB371", text: "#FFFFFF" }, // Sea green
+  "Chamomile Extract": { bg: "#FFD700", text: "#1F2937" }, // Yellow flower
+  "Calendula Extract": { bg: "#FFA500", text: "#1F2937" }, // Orange flower
+  "Lavender Extract": { bg: "#E6E6FA", text: "#1F2937" }, // Lavender
+  "Lemon Balm Extract": { bg: "#98FB98", text: "#1F2937" }, // Light green
+  "Gotu Kola Extract": { bg: "#2E8B57", text: "#FFFFFF" }, // Green
+  "Elderberry Extract": { bg: "#4B0082", text: "#FFFFFF" }, // Indigo/purple
+  "Grape Seed Extract": { bg: "#800080", text: "#FFFFFF" }, // Purple/red
+  "Black Cohosh Extract": { bg: "#A9A9A9", text: "#1F2937" }, // Grey/black root
+  "Kudzu Extract": { bg: "#DDA0DD", text: "#1F2937" }, // Purple flower/pale root
+
+  // --- ORGANIC FERTILIZERS ---
+  "Cow dung manure (FYM – Farmyard Manure)": { bg: "#5C4033", text: "#FFFFFF" }, // Dark earthy brown
+  "Poultry manure": { bg: "#8B7355", text: "#FFFFFF" }, // Grey-brown
+  "Bone meal": { bg: "#F5F5DC", text: "#1F2937" }, // Off-white/beige
+  "Fish meal": { bg: "#8B4513", text: "#FFFFFF" }, // Brown
+  "Vermicompost": { bg: "#3E2723", text: "#FFFFFF" }, // Very dark rich brown/black
+  "Compost": { bg: "#4E342E", text: "#FFFFFF" }, // Loamy brown
+  "Green manure (sunhemp, dhaincha)": { bg: "#4CAF50", text: "#FFFFFF" }, // Vivid crop green
+  "Neem cake": { bg: "#556B2F", text: "#FFFFFF" }, // Dark greenish-brown
+  "Castor cake": { bg: "#A0522D", text: "#FFFFFF" }, // Sienna brown
+  "Seaweed extract": { bg: "#2F4F4F", text: "#FFFFFF" }, // Dark slate/ocean green
+  "Rock phosphate": { bg: "#A9A9A9", text: "#1F2937" }, // Greyish mineral
+  "Gypsum": { bg: "#F8F8FF", text: "#1F2937" }, // Ghost white
+  "Lime": { bg: "#F5FFFA", text: "#1F2937" } // Mint cream / chalk white
 };
 
-// Extracted from the Scentorgo PDF (Icons removed per client request)
+// Extracted from the Scentorgo PDF
 const herbalProducts = [
   { name: "Ashwagandha Extract", scientific: "Withania Somnifera" },
   { name: "Green Tea Extract", scientific: "Camellia Sinensis" },
@@ -273,20 +342,48 @@ const Products = () => {
         {/* Product Display Area */}
         {activeCategory && (
           <div>
-            {/* Herbal Products - Standard Grid */}
+            {/* Herbal Products - Standard Grid with Dynamic Hover */}
             {activeCategory === "Herbal Products" && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {herbalProducts.map((product, index) => (
-                  <div 
-                    key={index} 
-                    className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center justify-center text-center min-h-40"
-                  >
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{product.name}</h3>
-                    <p className="text-xs text-green-700 font-medium bg-green-50 inline-block px-3 py-1 rounded-full">
-                      {product.scientific}
-                    </p>
-                  </div>
-                ))}
+                {herbalProducts.map((product, index) => {
+                  const isHovered = hoveredProduct === product.name;
+                  const customColors = productHoverColors[product.name];
+
+                  return (
+                    <div 
+                      key={index} 
+                      onMouseEnter={() => setHoveredProduct(product.name)}
+                      onMouseLeave={() => setHoveredProduct(null)}
+                      style={{ 
+                        backgroundColor: isHovered && customColors ? customColors.bg : 'white' 
+                      }}
+                      className={`rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center justify-center text-center min-h-40 ${
+                        isHovered && customColors ? '' : 'hover:bg-green-50'
+                      }`}
+                    >
+                      <h3 
+                        className="text-xl font-bold mb-3 transition-colors duration-300"
+                        style={{
+                          color: isHovered && customColors ? customColors.text : '#111827'
+                        }}
+                      >
+                        {product.name}
+                      </h3>
+                      <p 
+                        className="text-xs font-medium px-3 py-1 rounded-full transition-colors duration-300"
+                        style={{
+                          // Smart background logic: Semi-transparent overlay based on text color needs
+                          backgroundColor: isHovered && customColors 
+                            ? (customColors.text === '#FFFFFF' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)') 
+                            : '#F0FDF4', // bg-green-50
+                          color: isHovered && customColors ? customColors.text : '#15803D' // text-green-700
+                        }}
+                      >
+                        {product.scientific}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             )}
 
@@ -307,7 +404,7 @@ const Products = () => {
                       </span>
                     </button>
                     
-                    {/* Subcategory Grid - Shows only if active */}
+                    {/* Subcategory Grid */}
                     {activeAgriCategory === categoryName && (
                       <div className="px-8 pb-8 pt-2 border-t border-gray-100 bg-gray-50/50">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
@@ -321,21 +418,16 @@ const Products = () => {
                                 onMouseEnter={() => setHoveredProduct(product.name)}
                                 onMouseLeave={() => setHoveredProduct(null)}
                                 style={{ 
-                                  backgroundColor: isHovered && customColors 
-                                    ? customColors.bg 
-                                    : 'white' // Default color
+                                  backgroundColor: isHovered && customColors ? customColors.bg : 'white' 
                                 }}
                                 className={`rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center min-h-24 ${
-                                  // Apply subtle green tailwind hover if it doesn't have custom colors mapped
                                   isHovered && customColors ? '' : 'hover:bg-green-50'
                                 }`}
                               >
                                 <h4 
                                   className="text-lg font-bold transition-colors duration-300"
                                   style={{
-                                    color: isHovered && customColors 
-                                      ? customColors.text 
-                                      : '#111827' // text-gray-900 equivalent
+                                    color: isHovered && customColors ? customColors.text : '#111827'
                                   }}
                                 >
                                   {product.name}
@@ -380,7 +472,7 @@ const Products = () => {
                   </div>
                 </div>
 
-                {/* Subcategories Accordion */}
+                {/* Subcategories Accordion with Dynamic Hover */}
                 <div className="space-y-4">
                   {organicFertilizersInfo.categories.map((cat, index) => (
                     <div key={index} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
@@ -399,18 +491,37 @@ const Products = () => {
                         </span>
                       </button>
                       
-                      {/* Subcategory Grid - Shows only if active */}
+                      {/* Subcategory Grid */}
                       {activeOrganicCategory === cat.name && (
                         <div className="px-8 pb-8 pt-2 border-t border-gray-100 bg-gray-50/50">
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-                            {cat.items.map((item, idx) => (
-                              <div 
-                                key={idx} 
-                                className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center justify-center text-center min-h-24"
-                              >
-                                <h4 className="text-lg font-bold text-gray-900">{item}</h4>
-                              </div>
-                            ))}
+                            {cat.items.map((item, idx) => {
+                              const isHovered = hoveredProduct === item;
+                              const customColors = productHoverColors[item];
+
+                              return (
+                                <div 
+                                  key={idx} 
+                                  onMouseEnter={() => setHoveredProduct(item)}
+                                  onMouseLeave={() => setHoveredProduct(null)}
+                                  style={{ 
+                                    backgroundColor: isHovered && customColors ? customColors.bg : 'white' 
+                                  }}
+                                  className={`rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center justify-center text-center min-h-24 ${
+                                    isHovered && customColors ? '' : 'hover:bg-green-50'
+                                  }`}
+                                >
+                                  <h4 
+                                    className="text-lg font-bold transition-colors duration-300"
+                                    style={{
+                                      color: isHovered && customColors ? customColors.text : '#111827'
+                                    }}
+                                  >
+                                    {item}
+                                  </h4>
+                                </div>
+                              );
+                            })}
                           </div>
                         </div>
                       )}

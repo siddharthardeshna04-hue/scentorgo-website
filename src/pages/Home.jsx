@@ -1,6 +1,7 @@
 const Home = () => {
   return (
-    <section id="home" className="min-h-[85vh] flex flex-col justify-center items-center text-center px-6 bg-gray-50">
+    // Changed min-h-[85vh] to min-h-[60vh] and added pt-20 to pull the content up slightly
+    <section id="home" className="min-h-[60vh] pt-20 flex flex-col justify-center items-center text-center px-6 bg-gray-50">
       
       <div className="max-w-4xl mx-auto">
         <p className="text-green-600 font-semibold tracking-widest uppercase mb-4">
