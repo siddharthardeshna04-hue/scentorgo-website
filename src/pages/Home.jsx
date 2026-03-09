@@ -3,7 +3,7 @@ const Home = () => {
     // Change min-h-[60vh] to min-h-[80vh]
     <section
       id="home"
-      className="relative min-h-[80vh] pt-20 flex flex-col justify-center items-center text-center px-6 bg-[url('/scentorgo-offerings.png')] bg-cover bg-center bg-no-repeat"
+      className="relative min-h-[90vh] pt-20 flex flex-col justify-center items-center text-center px-6 bg-[url('/scentorgo.png')] bg-cover bg-center bg-no-repeat"
     >
       {/* Dark overlay to make the text readable against the busy image */}
       <div className="absolute inset-0 bg-black/60"></div>
