@@ -48,7 +48,7 @@ const Navbar = () => {
             <img 
               src={logo} 
               alt="Scentorgo logo" 
-              className="h-12 lg:h-18 w-auto object-contain scale-[1.8] lg:scale-[2] origin-left" 
+              className="h-12 lg:h-18 w-auto object-contain scale-[1.15] lg:scale-[2] origin-left mt-4" 
             />
           </a>
 
