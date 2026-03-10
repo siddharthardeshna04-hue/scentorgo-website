@@ -1,14 +1,17 @@
 import { useState } from "react";
+import { NavHashLink } from 'react-router-hash-link';
 import logo from "../assets/Scentorgo Export logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // We updated the hrefs to include the slash (/) first.
+  // This tells the browser: "Go to the root domain FIRST, then scroll to the ID"
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About Us", href: "#about" },
-    { name: "Products", href: "#products" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Home", href: "/#home" },
+    { name: "About Us", href: "/#about" },
+    { name: "Products", href: "/#products" },
+    { name: "Contact Us", href: "/#contact" },
   ];
 
   return (
@@ -42,26 +45,26 @@ const Navbar = () => {
       <nav className="w-full bg-white/90 backdrop-blur-md shadow-sm transition-all">
         <div className="max-w-7xl mx-auto px-6 py-2 md:py-3 flex justify-between items-center">
           
-         {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
-            {/* Increased scale to [1.8] visually enlarges the logo without changing navbar height */}
+         {/* Logo - Updated to use HashLink so it clicks home properly */}
+          <NavHashLink smooth to="/#home" className="flex items-center gap-3">
             <img 
               src={logo} 
               alt="Scentorgo logo" 
               className="h-12 lg:h-18 w-auto object-contain scale-[1.15] lg:scale-[2] origin-left mt-4" 
             />
-          </a>
+          </NavHashLink>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 font-medium text-gray-600">
             {navLinks.map((link) => (
-              <a
+              <NavHashLink
+                smooth
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className="hover:text-green-600 transition duration-300"
               >
                 {link.name}
-              </a>
+              </NavHashLink>
             ))}
           </div>
 
@@ -81,14 +84,15 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col space-y-4 shadow-xl pb-6">
             {navLinks.map((link) => (
-              <a
+              <NavHashLink
+                smooth
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 onClick={() => setIsOpen(false)}
                 className="text-gray-700 font-medium text-lg hover:text-green-600"
               >
                 {link.name}
-              </a>
+              </NavHashLink>
             ))}
           </div>
         )}
