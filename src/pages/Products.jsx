@@ -332,7 +332,8 @@ const Products = () => {
                 setActiveAgriCategory(null);
                 setActiveOrganicCategory(null);
               }}
-              className={`relative h-48 w-full rounded-2xl overflow-hidden group shadow-md transition-all duration-300 ${
+              // Added cursor-pointer here
+              className={`cursor-pointer relative h-48 w-full rounded-2xl overflow-hidden group shadow-md transition-all duration-300 ${
                 activeCategory === cat.name
                   ? "ring-4 ring-green-600 scale-105 shadow-xl"
                   : "opacity-90 hover:opacity-100 hover:shadow-lg"
@@ -380,7 +381,8 @@ const Products = () => {
                       style={{ 
                         backgroundColor: isHovered && customColors ? customColors.bg : 'white' 
                       }}
-                      className={`rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center justify-center text-center min-h-40 ${
+                      // Added cursor-pointer here
+                      className={`cursor-pointer rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center justify-center text-center min-h-40 ${
                         isHovered && customColors ? '' : 'hover:bg-green-50'
                       }`}
                     >
@@ -395,11 +397,10 @@ const Products = () => {
                       <p 
                         className="text-xs font-medium px-3 py-1 rounded-full transition-colors duration-300"
                         style={{
-                          // Smart background logic: Semi-transparent overlay based on text color needs
                           backgroundColor: isHovered && customColors 
                             ? (customColors.text === '#FFFFFF' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)') 
-                            : '#F0FDF4', // bg-green-50
-                          color: isHovered && customColors ? customColors.text : '#15803D' // text-green-700
+                            : '#F0FDF4', 
+                          color: isHovered && customColors ? customColors.text : '#15803D' 
                         }}
                       >
                         {product.scientific}
@@ -416,7 +417,6 @@ const Products = () => {
                 {Object.entries(groupedAgriProducts).map(([categoryName, products]) => (
                   <div key={categoryName} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
                     
-                    {/* Toggle Button for Subcategory */}
                     <button
                       onClick={() => setActiveAgriCategory(activeAgriCategory === categoryName ? null : categoryName)}
                       className="w-full px-8 py-5 flex justify-between items-center text-left hover:bg-green-50 transition-colors duration-300 focus:outline-none"
@@ -427,7 +427,6 @@ const Products = () => {
                       </span>
                     </button>
                     
-                    {/* Subcategory Grid */}
                     {activeAgriCategory === categoryName && (
                       <div className="px-8 pb-8 pt-2 border-t border-gray-100 bg-gray-50/50">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
@@ -443,7 +442,8 @@ const Products = () => {
                                 style={{ 
                                   backgroundColor: isHovered && customColors ? customColors.bg : 'white' 
                                 }}
-                                className={`rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center min-h-24 ${
+                                // Added cursor-pointer here
+                                className={`cursor-pointer rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center min-h-24 ${
                                   isHovered && customColors ? '' : 'hover:bg-green-50'
                                 }`}
                               >
@@ -471,13 +471,11 @@ const Products = () => {
             {activeCategory === "Organic Fertilizers" && (
               <div className="space-y-6">
                 
-                {/* Descriptive Text & Benefits for Organic Fertilizers */}
                 <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm text-center">
                   <p className="text-gray-700 leading-relaxed text-lg mb-6">
                     {organicFertilizersInfo.description}
                   </p>
                   
-                  {/* Benefits Section */}
                   <div className="pt-4 border-t border-gray-100">
                     <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
                       Benefits of Organic Fertilizers 🌾
@@ -495,12 +493,10 @@ const Products = () => {
                   </div>
                 </div>
 
-                {/* Subcategories Accordion with Dynamic Hover */}
                 <div className="space-y-4">
                   {organicFertilizersInfo.categories.map((cat, index) => (
                     <div key={index} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
                       
-                      {/* Toggle Button for Subcategory */}
                       <button
                         onClick={() => setActiveOrganicCategory(activeOrganicCategory === cat.name ? null : cat.name)}
                         className="w-full px-8 py-5 flex justify-between items-center text-left hover:bg-green-50 transition-colors duration-300 focus:outline-none"
@@ -514,7 +510,6 @@ const Products = () => {
                         </span>
                       </button>
                       
-                      {/* Subcategory Grid */}
                       {activeOrganicCategory === cat.name && (
                         <div className="px-8 pb-8 pt-2 border-t border-gray-100 bg-gray-50/50">
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
@@ -530,7 +525,8 @@ const Products = () => {
                                   style={{ 
                                     backgroundColor: isHovered && customColors ? customColors.bg : 'white' 
                                   }}
-                                  className={`rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center justify-center text-center min-h-24 ${
+                                  // Added cursor-pointer here
+                                  className={`cursor-pointer rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center justify-center text-center min-h-24 ${
                                     isHovered && customColors ? '' : 'hover:bg-green-50'
                                   }`}
                                 >
